@@ -1,17 +1,10 @@
 package net.qamar.data.mapper
 
-import net.qamar.data.model.Movie
-import net.qamar.data.model.SearchResult
-import javax.inject.Inject
 
+interface EntityMapper<E, D> {
+// E = model into your Data layer , D = model into your Domain layer
+    fun mapFromEntity(entity: E): D
 
-class EntityMapper @Inject constructor() {
+    fun mapToEntity(domain: D): E
 
-    fun mapToEntity(searchResultModelServer: SearchResult): net.qamar.domain.models.SearchResult {
-        return  net.qamar.domain.models.SearchResult(
-            searchResultModelServer.search ?: ArrayList<Any>(),
-            searchResultModelServer.totalResults ?: 0,
-            searchResultModelServer.isResponse ?: ""
-        )
-    }
 }

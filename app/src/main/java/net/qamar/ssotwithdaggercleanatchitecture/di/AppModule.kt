@@ -17,6 +17,9 @@ abstract class AppModule {
     @Binds
     abstract fun bindContext(application: Application): Context
 
+    @Binds
+    abstract fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory
+
 
 
 }

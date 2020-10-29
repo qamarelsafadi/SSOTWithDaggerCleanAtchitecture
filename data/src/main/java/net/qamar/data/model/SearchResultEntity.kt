@@ -3,9 +3,9 @@ package net.qamar.data.model
 import com.squareup.moshi.Json
 
 
-data class SearchResult(
+data class SearchResultEntity(
     @field:Json(name = "Search")
-    var search: ArrayList<Any>? = null,
+    var searches: List<MovieEntity> = listOf(),
 
     @field:Json(name = "totalResults")
     var totalResults: Int = 0,
@@ -16,7 +16,7 @@ data class SearchResult(
 
 
     override fun toString(): String {
-        return "SearchResult(search=$search, totalResults=$totalResults, response=$isResponse )"
+        return "SearchResult(search=$searches, totalResults=$totalResults, response=$isResponse )"
     }
 
 }

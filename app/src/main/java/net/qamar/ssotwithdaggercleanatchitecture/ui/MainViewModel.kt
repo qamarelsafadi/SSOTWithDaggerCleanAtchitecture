@@ -6,35 +6,33 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers.io
-import net.qamar.domain.models.SearchResult
 import net.qamar.domain.usecases.GetMoviesUseCase
+import net.qamar.ssotwithdaggercleanatchitecture.mapper.SearchResultViewMapper
+import net.qamar.ssotwithdaggercleanatchitecture.model.SearchResultView
 import javax.inject.Inject
 
 
 class MainViewModel @Inject constructor(
-    private val shareUseCase: GetMoviesUseCase
+    private val shareUseCase: GetMoviesUseCase,
+    private val mapper: SearchResultViewMapper
 ) : ViewModel() {
-    private val movieLiveData = MutableLiveData<SearchResult>()
+    private val _movieLiveData = MutableLiveData<SearchResultView>()
     private val compositeDisposable = CompositeDisposable()
-    lateinit var data: LiveData<SearchResult>
 
 
-    fun getMovieData(): LiveData<SearchResult> {
+    fun getMovieData(): LiveData<SearchResultView> {
         shareUseCase.execute()
             .subscribeOn(io())
             .subscribe({
-                it?.let {
-                    movieLiveData.postValue(it)
-                }
-            }, {
-                Log.e("qmrThro",it.message!!)
-
+                it?.let { _movieLiveData.postValue(mapper.mapToView(it)) }
+            },{
+                Log.e("qmrThro", it.message!!)
             }).let {
                 compositeDisposable.add(it)
             }
 
-        return movieLiveData
 
+        return _movieLiveData
     }
 
 
