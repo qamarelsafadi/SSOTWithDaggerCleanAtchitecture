@@ -17,6 +17,7 @@ class SearchResultMapper @Inject constructor(private val movieMapper: MovieMappe
     override fun mapToEntity(domain: SearchResult): SearchResultEntity {
 
         return SearchResultEntity(
+            "1",
             searches = domain.search!!.map { movieMapper.mapToEntity(it) },
             isResponse = domain.isResponse,
             totalResults = domain.totalResults!!

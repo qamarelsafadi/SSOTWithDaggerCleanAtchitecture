@@ -8,6 +8,6 @@ import javax.inject.Inject
 class GetMoviesUseCase @Inject
 constructor(private val remoteRepo: RemoteRepo):SingleUseCase<SearchResult> {
     override fun execute(): Single<SearchResult> {
-        return remoteRepo.getMovies()
+        return remoteRepo.getSearchResult()
     }
 }

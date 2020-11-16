@@ -7,7 +7,6 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-
     @GET("/?s=Batman&page=1&apikey=96099fe3")
     fun getSharingDetails(): Single<SearchResultEntity>
 

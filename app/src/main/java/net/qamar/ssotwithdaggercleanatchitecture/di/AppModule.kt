@@ -8,8 +8,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Single
-import net.qamar.domain.models.SearchResult
-import net.qamar.domain.repositories.RemoteRepo
 import net.qamar.ssotwithdaggercleanatchitecture.viewmodel.ViewModelProviderFactory
 
 @Module
