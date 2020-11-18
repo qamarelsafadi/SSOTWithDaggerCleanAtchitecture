@@ -1,4 +1,4 @@
-package net.qamar.data.repositories
+package net.qamar.data.store.repository
 
 
 import android.util.Log
@@ -17,23 +17,11 @@ class RemoteRepoImpl @Inject constructor(
     private val entityMapper: SearchResultMapper
 ) : RemoteRepo {
 
-    init {
-        if (movieDao != null)
-            Log.e("qmr", "hey database from repository")
-    }
 
-    override fun getSearchResult(): Single<SearchResult> {
-        //todo make a store data factory to handle online and offline
-
-        return  apiService.getSharingDetails()
-            .map {
-//                movieDao.insert(it)
-//                Log.e("qmrData","${movieDao.all.blockingGet().searches.size}")
+    override fun getSearchResult(): Single<SearchResult> =
+          apiService.getSharingDetails()
+                  .map {
+                movieDao.insert(it)
                 entityMapper.mapFromEntity(it)
-            }
-
-
-    }
-
-
+          }
 }

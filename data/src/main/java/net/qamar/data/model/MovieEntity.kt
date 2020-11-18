@@ -7,11 +7,7 @@ import com.squareup.moshi.Json
 
 @Entity
 class MovieEntity(
-    @PrimaryKey
-    var imdbID: String,
-    @field:Json(name = "Title")
-    var title: String? = null,
-
-    @field:Json(name = "Year")
-    var year: String? = null
+    @PrimaryKey var imdbID: String,
+    @field:Json(name = "Title") var title: String? = null,
+    @field:Json(name = "Year") var year: String? = null
 )

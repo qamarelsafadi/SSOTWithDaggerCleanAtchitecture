@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 class SearchResultMapper @Inject constructor(private val movieMapper: MovieMapper) :
     EntityMapper<SearchResultEntity, SearchResult> {
+
     override fun mapFromEntity(entity: SearchResultEntity): SearchResult {
         return SearchResult(
             search = entity.searches.map { movieMapper.mapFromEntity(it) } ,
@@ -15,7 +16,6 @@ class SearchResultMapper @Inject constructor(private val movieMapper: MovieMappe
     }
 
     override fun mapToEntity(domain: SearchResult): SearchResultEntity {
-
         return SearchResultEntity(
             "1",
             searches = domain.search!!.map { movieMapper.mapToEntity(it) },

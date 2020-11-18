@@ -10,7 +10,7 @@ class MoviesItemConverters {
     private val termsType = Types.newParameterizedType(List::class.java, MovieEntity::class.java)
     private val termsAdapter = moshi.adapter<List<MovieEntity>>(termsType)
     @TypeConverter
-    fun listToJson(list: List<MovieEntity>?) = termsAdapter.toJson(list)
+    fun listToJson(list: List<MovieEntity>?) = termsAdapter.toJson(list)!!
 
     @TypeConverter
     fun jsonToList(value: String) = termsAdapter.fromJson(value).orEmpty()
