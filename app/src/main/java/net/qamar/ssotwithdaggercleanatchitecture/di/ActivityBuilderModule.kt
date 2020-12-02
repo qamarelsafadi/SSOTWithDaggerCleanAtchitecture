@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import net.qamar.ssotwithdaggercleanatchitecture.ui.MainActivity
 
-
 //only activity contribution
 @Module
 abstract class ActivityBuilderModule {

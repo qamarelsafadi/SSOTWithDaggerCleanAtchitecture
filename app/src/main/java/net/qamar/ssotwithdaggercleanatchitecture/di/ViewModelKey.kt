@@ -1,6 +1,5 @@
 package net.qamar.ssotwithdaggercleanatchitecture.di
 
-
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
 import java.lang.annotation.Documented

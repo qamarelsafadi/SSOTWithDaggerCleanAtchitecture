@@ -17,29 +17,15 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        val view: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_movies_list_item, parent, false)
-
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.layout_movies_list_item, parent, false)
         return ViewHolder(view)
-
     }
-
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        holder.bind(items[position])
-
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { holder.bind(items[position]) }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: MovieView) {
-
-            itemView.title.text = item.title
-
-        }
+        fun bind(item: MovieView) { itemView.title.text = item.title }
     }
-
 }

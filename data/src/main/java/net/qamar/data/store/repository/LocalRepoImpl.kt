@@ -12,7 +12,5 @@ class LocalRepoImpl @Inject constructor(
     private val movieDao: MovieDao,
     private val entityMapper: SearchResultMapper
 ) : RemoteRepo {
-    override fun getSearchResult(): Single<SearchResult> =
-            movieDao.all.map { entityMapper.mapFromEntity(it) }
-
+    override fun getSearchResult(): Single<SearchResult> = movieDao.all.map { entityMapper.mapFromEntity(it) }
 }

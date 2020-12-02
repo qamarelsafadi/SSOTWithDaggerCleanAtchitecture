@@ -21,5 +21,4 @@ class MovieMapper @Inject constructor() : EntityMapper<MovieEntity, Movie> {
                 year = domain.year
         )
     }
-
 }

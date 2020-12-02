@@ -16,9 +16,9 @@ class MainViewModel @Inject constructor(
     private val shareUseCase: GetMoviesUseCase,
     private val mapper: SearchResultViewMapper
 ) : ViewModel() {
+
     private val _movieLiveData = MutableLiveData<SearchResultView>()
     private val compositeDisposable = CompositeDisposable()
-
 
     fun getMovieData(): LiveData<SearchResultView> {
         shareUseCase.execute()
@@ -30,15 +30,10 @@ class MainViewModel @Inject constructor(
             }).let {
                 compositeDisposable.add(it)
             }
-
-
         return _movieLiveData
     }
-
 
     override fun onCleared() {
         compositeDisposable.clear()
     }
-
-
 }

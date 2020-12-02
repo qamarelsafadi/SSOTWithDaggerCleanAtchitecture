@@ -16,10 +16,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract val movieDao: MovieDao?
 
     companion object {
-
         private const val DATABASE_DB = "database.db"
         private var appDatabase: AppDatabase? = null
-
         fun getInstance(context: Context?): AppDatabase? {
             if (appDatabase == null) {
                 appDatabase = Room.databaseBuilder(
@@ -30,5 +28,4 @@ abstract class AppDatabase : RoomDatabase() {
             return appDatabase
         }
     }
-
 }

@@ -16,8 +16,6 @@ class RemoteRepoImpl @Inject constructor(
     private val movieDao: MovieDao,
     private val entityMapper: SearchResultMapper
 ) : RemoteRepo {
-
-
     override fun getSearchResult(): Single<SearchResult> =
           apiService.getSharingDetails()
                   .map {

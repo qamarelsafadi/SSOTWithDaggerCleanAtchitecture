@@ -11,7 +11,6 @@ class MoviesItemConverters {
     private val termsAdapter = moshi.adapter<List<MovieEntity>>(termsType)
     @TypeConverter
     fun listToJson(list: List<MovieEntity>?) = termsAdapter.toJson(list)!!
-
     @TypeConverter
     fun jsonToList(value: String) = termsAdapter.fromJson(value).orEmpty()
 }

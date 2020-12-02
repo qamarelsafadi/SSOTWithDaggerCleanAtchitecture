@@ -19,9 +19,7 @@ class NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         val okHttpBuilder = OkHttpClient.Builder()
-            .addNetworkInterceptor(httpLoggingInterceptor.apply {
-                httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-            })
+            .addNetworkInterceptor(httpLoggingInterceptor.apply { httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY })
         okHttpBuilder.addInterceptor(HttpLoggingInterceptor())
         return okHttpBuilder.build()
     }
@@ -34,7 +32,6 @@ class NetworkModule {
             .build()!!
     }
 
-
     @Singleton
     @Provides
     fun getRetrofitInstance(moshi: Moshi , okHttpClient: OkHttpClient): Retrofit {
@@ -45,7 +42,4 @@ class NetworkModule {
             .client(okHttpClient)
             .build()
     }
-
-
-
 }

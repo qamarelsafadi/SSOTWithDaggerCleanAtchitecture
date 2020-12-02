@@ -10,6 +10,4 @@ abstract class DataModule {
 
     @Binds
     abstract fun bindRemoteRepository(dataRepository: SearchResultRepository): RemoteRepo
-
-
 }

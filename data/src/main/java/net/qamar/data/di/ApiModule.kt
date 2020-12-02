@@ -22,17 +22,11 @@ class ApiModule {
     @Singleton
     @Provides
     fun getDataBase(application: Application): AppDatabase {
-
         return AppDatabase.getInstance(application)!!
     }
-
 
     @Provides
     fun movieDao(appDatabase: AppDatabase) : MovieDao {
         return appDatabase.movieDao!!
     }
-
-
-
-
 }

@@ -21,33 +21,24 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var adapter: MovieAdapter
     private val viewModel by viewModels<MainViewModel> {viewModelFactory }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
         initUI()
         subscribeObserver()
-
-
     }
 
     private  fun subscribeObserver() {
         viewModel.getMovieData().observe(this, Observer {
             val array = it.searches
-            adapter.items = array
-        })
-
-
+            adapter.items = array }
+        )
     }
 
     private fun initUI() {
-
         adapter = MovieAdapter()
         movieList.layoutManager = LinearLayoutManager(this)
         movieList.adapter = adapter
-
     }
-
-
 }
